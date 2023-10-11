@@ -25,8 +25,7 @@ export const comicApi = createApi ( {
                 const arrayDataComics:comicCardType[] = response.data.results.map((comic:any) => {
                     const comicCardData = {
                         id: comic.id,
-                        title: comic.title,
-                        name: comic.name,
+                        title: comic.title,  
                         page_count: comic.pageCount,
                         price: comic.prices[0].price,
                         thumbnail: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
