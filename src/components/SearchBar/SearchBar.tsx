@@ -29,7 +29,6 @@ const SearchBar:React.FC = () => {
             }
         }
     }
-    // busca a medida que escribo
     useEffect(() => {
         if (nameComic.trim() !== '') {
             refetch()
@@ -41,7 +40,7 @@ const SearchBar:React.FC = () => {
         }    
         
     },[nameComic])
-    console.log(nameComic);
+  
     
     return(
         <div className={styles.container}>
@@ -56,7 +55,7 @@ const SearchBar:React.FC = () => {
                 className={styles.buttonX}>X</button>
             <button 
                 onClick={() => onSearch(nameComic)} 
-                className={styles.buttonSearch}></button>
+                className={styles.buttonSearch}>🔎</button>
 
         </div>
     )

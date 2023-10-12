@@ -25,11 +25,13 @@ const Detail: React.FC = () => {
         
     if (comicByID) {
         return (
-            <div className={styles.container}>     
+            <div className={styles.container}>
+                <span className={styles.background}/>     
                 <div className={styles.header}>
                     <h1 className={styles.title}
                     >{comicByID.title}</h1>
-                </div>
+                    
+                s</div>
                 <div className={styles.body}>
                     <div className={styles.left}>
                         <ImageViewer

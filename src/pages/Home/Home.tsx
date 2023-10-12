@@ -51,6 +51,7 @@ const Home:React.FC = () => {
         {!isLoading
         ?
         <div className={styles.container}>
+            <span className={styles.background}/>
             <NavBar/>
             <CardMapper
                 offset = {offset}
