@@ -1,6 +1,12 @@
 .container{
+    all: unset;
+    width: 100%;
     display: flex;
+    position: relative;
+    margin-top: 5rem;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;    
 }

@@ -13,7 +13,7 @@ import { cleanComicsByName } from '../../toolkit/comic/comicSlice'
 const NavBar:React.FC = () => {
     const comicsByName = useSelector((state:RootState) => state.comics.comicsByName);
     const dispatch = useDispatch<AppDispatch>()    
-    const onClean = (id:any) => {
+    const onClean = () => {
         dispatch(cleanComicsByName())
 
     }   
@@ -32,7 +32,7 @@ const NavBar:React.FC = () => {
                         <NavLink                                
                             to={`/detail/${comic.id}`}
                              ><button 
-                                onClick={(id) => onClean(id)}
+                                onClick={() => onClean()}
                                 >{comic.title}</button>
                         </NavLink>
                     </li>

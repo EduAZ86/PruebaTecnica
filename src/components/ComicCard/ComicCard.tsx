@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom'
 import { comicCardType } from "../../types/comics.types";
 import styles from './ComicCard.module.css'
 interface ComicCardProps {
@@ -7,7 +8,8 @@ interface ComicCardProps {
 
 const ComicCard:React.FC<ComicCardProps> = ({comic}) => {
 
-    const {      
+    const {
+        id,      
         title,
         price,
         page_count,
@@ -15,18 +17,15 @@ const ComicCard:React.FC<ComicCardProps> = ({comic}) => {
         thumbnail,
     } = comic
 
-
     return(
         <div className={styles.container}> 
-            <img 
-            className={styles.imageBackground}
-            
+            <img className={styles.imageBackground}            
             src={thumbnail} />
             <div className={styles.header}>
                 <h2 className={styles.title}>
                     {title}
                 </h2>
-                <span className={styles.backgroundHeader}/>
+                <span className={styles.backgroundHeader}/>                
                 { creators.length > 0 &&  <ul className={styles.creators}>
                         {creators.map((creator, index) => {
                             return(
@@ -46,9 +45,13 @@ const ComicCard:React.FC<ComicCardProps> = ({comic}) => {
                     </ul>}
             </div>
             <div className={styles.footer}>
-                <button className={styles.carButton}>
-                    agregar al carrito
-                </button>
+                <NavLink
+                    to={`/detail/${id}`}
+                    >
+                    <button className={styles.carButton}>
+                        mas
+                    </button>
+                </NavLink>
                 <span className={styles.backgroundFooter}/>
                 <div className={styles.priceContainer}>
                     <span className={styles.price}>

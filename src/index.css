@@ -4,8 +4,10 @@
 
 :root {
   --primary-font:'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
 }
-body {
+body{
   font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;

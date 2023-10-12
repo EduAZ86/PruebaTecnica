@@ -19,7 +19,7 @@ export const comicsSlice = createSlice({
   initialState,
   reducers: {
     setComics: (state, action: PayloadAction<comicCardType[]>) => {
-      state.comics = action.payload;
+      state.comics.push(...action.payload);
     },
     setComicsByName: (state, action: PayloadAction<comicCardType[]>) => {
       state.comicsByName = action.payload;

@@ -41,9 +41,29 @@ const Detail: React.FC = () => {
                         </div>
                     </div>
                     <div className={styles.right}>
-                            <h2>{comicByID.price} U$d</h2>
+                            <h2 className={styles.price}>{comicByID.price} U$d</h2>
                             <p className={styles.description}                    
                             >{comicByID.description}</p>
+                            <span className={styles.autores}>autores</span>
+                            { comicByID.creators.length > 0 && 
+                                <ul className={styles.creators}>
+                                    {comicByID.creators.map((creator, index) => {
+                                        return(
+                                            <div
+                                                className={styles.creator}
+                                                key={index}
+                                            >
+                                                <span className={styles.name}>
+                                                    {creator.name}
+                                                </span>
+                                                <span className={styles.role}>
+                                                    {creator.role}
+                                                </span>
+                                            </div>
+                                        )
+                                    })}
+                                </ul>
+                            }
 
                     </div>
    
