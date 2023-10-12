@@ -36,8 +36,36 @@ export const comicApi = createApi ( {
                 })
                 return arrayDataComics
             },
+        }),
+        getComicsByName:builder.query({
+            query:(name:string) => {                
+                const hashApiKey = createHash()
+                const limit = '10'
+                return{
+                    url: '/comics',
+                    params:{
+                        title:name,
+                        ts:hashApiKey.ts,
+                        apikey:hashApiKey.apikey,
+                        hash: hashApiKey.hash,
+                        limit:limit,
+                       
+                    }
+            }
+        },
+        transformResponse: (response:any) => {
+            const arrayComicsByName:comicCardType[] = response.data.results.map((comic:any) => {
+                const comicCardData = {
+                    id: comic.id,
+                    title: comic.title,
+                    creators: comic.creators.items
+                }
+                return comicCardData
+            })
+            return arrayComicsByName
+        }
         })
     })
 })
 
-export const { useGetPageComicsQuery } = comicApi
+export const { useGetPageComicsQuery, useGetComicsByNameQuery } = comicApi

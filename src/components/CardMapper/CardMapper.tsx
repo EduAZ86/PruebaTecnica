@@ -8,7 +8,7 @@ import styles from './CArdMapper.module.css'
 const CardMapper:React.FC = () => {
 
     const comics = useSelector((state: RootState) => state.comics.comics);
-    console.log(comics);
+
     
     return(
         <div className={styles.container}>

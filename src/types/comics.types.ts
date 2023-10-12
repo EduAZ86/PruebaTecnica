@@ -12,3 +12,13 @@ export type comicCardType = {
         role:string;
     }[]
 }
+
+export type comicSearchByNameType = {
+    id:string;
+    title:string;
+    creators:{
+        resourceURI:string
+        name:string;
+        role:string;
+    }[]
+}

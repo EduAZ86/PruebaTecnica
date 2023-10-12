@@ -1,12 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { comicCardType } from '../../types/comics.types';
+import { comicCardType, comicSearchByNameType } from '../../types/comics.types';
 
 interface ComicsState {
   comics: comicCardType[];
+  comicsByName: comicSearchByNameType[]
+
 }
 
 const initialState: ComicsState = {
   comics: [],
+  comicsByName:[]
 };
 
 export const comicsSlice = createSlice({
@@ -16,10 +19,16 @@ export const comicsSlice = createSlice({
     setComics: (state, action: PayloadAction<comicCardType[]>) => {
       state.comics = action.payload;
     },
-  },
+    setComicsByName: (state, action: PayloadAction<comicCardType[]>) => {
+      state.comicsByName = action.payload;
+    },
+    cleanComicsByName: (state) => {
+      state.comicsByName = []
+    }
+}
 });
 
-export const { setComics } = comicsSlice.actions;
+export const { setComics, setComicsByName, cleanComicsByName } = comicsSlice.actions;
 
 export default comicsSlice.reducer;
 

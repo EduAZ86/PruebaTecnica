@@ -1,27 +1,16 @@
 
-import { useEffect } from 'react'
+import { Route, Routes} from 'react-router-dom';
+import Home from './pages/Home/Home'
+import Detail from './pages/Detail/Detail';
 
-import { useDispatch } from 'react-redux'
-import { AppDispatch} from './toolkit/store'
-import { setComics } from './toolkit/comic/comicSlice'
-import { useGetPageComicsQuery } from './toolkit/services/comicApi'
-import CardMapper from './components/CardMapper/CardMapper'
-
-
-function App() {
-
-  const dispatch = useDispatch<AppDispatch>()
-  const { data, error, isLoading } = useGetPageComicsQuery({limit: 30, offset: 1})
-
-  useEffect( () => {
-    if (data) {
-      dispatch(setComics(data))      
-    }
-  },[data, dispatch])
+function App() {  
 
   return (
     <div>
-      <CardMapper/>
+      <Routes>
+        <Route path = '/' element = { <Home/>}/>
+        <Route path = '/detail/:id' element = { <Detail/>}/>
+      </Routes>
     </div>
   )
 }
