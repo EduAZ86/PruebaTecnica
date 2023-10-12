@@ -9,14 +9,14 @@ import { AppDispatch } from '../../toolkit/store'
 import { cleanComicsByName } from '../../toolkit/comic/comicSlice'
 
 
+
 const NavBar:React.FC = () => {
     const comicsByName = useSelector((state:RootState) => state.comics.comicsByName);
     const dispatch = useDispatch<AppDispatch>()    
-    const onClean = () => {
+    const onClean = (id:any) => {
         dispatch(cleanComicsByName())
-    }
-    console.log(comicsByName);
-    
+
+    }   
 
     return(
         <div className={styles.container}>             
@@ -32,7 +32,7 @@ const NavBar:React.FC = () => {
                         <NavLink                                
                             to={`/detail/${comic.id}`}
                              ><button 
-                                onClick={onClean}
+                                onClick={(id) => onClean(id)}
                                 >{comic.title}</button>
                         </NavLink>
                     </li>

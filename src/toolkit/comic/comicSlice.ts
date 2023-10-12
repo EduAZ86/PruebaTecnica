@@ -3,13 +3,15 @@ import { comicCardType, comicSearchByNameType } from '../../types/comics.types';
 
 interface ComicsState {
   comics: comicCardType[];
-  comicsByName: comicSearchByNameType[]
+  comicsByName: comicSearchByNameType[];
+  comicById:any
 
 }
 
 const initialState: ComicsState = {
   comics: [],
-  comicsByName:[]
+  comicsByName:[],
+  comicById:{}
 };
 
 export const comicsSlice = createSlice({
@@ -24,11 +26,17 @@ export const comicsSlice = createSlice({
     },
     cleanComicsByName: (state) => {
       state.comicsByName = []
-    }
+    },
+    setComicById:(state, action: PayloadAction<any>) => {
+      state.comicById = action.payload
+    },
+    cleanComicById: (state) => {
+        state.comicById = {}
+      },
 }
 });
 
-export const { setComics, setComicsByName, cleanComicsByName } = comicsSlice.actions;
+export const { setComics, setComicsByName, cleanComicsByName, setComicById, cleanComicById } = comicsSlice.actions;
 
 export default comicsSlice.reducer;
 

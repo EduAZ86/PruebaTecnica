@@ -1,6 +1,7 @@
 import { createApi,fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { createHash } from '../../utils/hasher'
-import { comicCardType } from '../../types/comics.types'
+import { comicByIDType, comicCardType } from '../../types/comics.types'
+
 export const comicApi = createApi ( {
     reducerPath: 'marvelApi',
     baseQuery: fetchBaseQuery({
@@ -48,11 +49,10 @@ export const comicApi = createApi ( {
                         ts:hashApiKey.ts,
                         apikey:hashApiKey.apikey,
                         hash: hashApiKey.hash,
-                        limit:limit,
-                       
+                        limit:limit,                       
                     }
             }
-        },
+            },
         transformResponse: (response:any) => {
             const arrayComicsByName:comicCardType[] = response.data.results.map((comic:any) => {
                 const comicCardData = {
@@ -65,7 +65,26 @@ export const comicApi = createApi ( {
             return arrayComicsByName
         }
         })
+        ,
+        getComicByID:builder.query({
+            query:(id:string) => {                
+                const hashApiKey = createHash()              
+                return{
+                    url: `/comics/${id}`,
+                    params:{                       
+                        ts:hashApiKey.ts,
+                        apikey:hashApiKey.apikey,
+                        hash: hashApiKey.hash,                       
+                    }
+            }
+            },
+            transformResponse: (response:any) => {
+                const comicByID = response.data.results
+                return comicByID
+            },
+        }),
+        
     })
 })
 
-export const { useGetPageComicsQuery, useGetComicsByNameQuery } = comicApi
+export const { useGetPageComicsQuery, useGetComicsByNameQuery, useGetComicByIDQuery } = comicApi
